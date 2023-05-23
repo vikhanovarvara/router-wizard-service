@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  EMPLOYEE
+}
+
+enum AppealStatus {
+  INITIATED
+  ACCEPTED
+  ON_THE_WAY
+  IN_EXECUTION
+  EXECUTED
+  CLOSED
+}
+
+model User {
+  uuid      String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  phone     String?
+  password  String
+  role      Role
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Appeal {
+  uuid        String       @id @default(uuid())
+  name        String
+  email       String
+  phone       String
+  router      String
+  address     String
+  status      AppealStatus
+  description String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
