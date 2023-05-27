@@ -8,7 +8,8 @@ export class EmailSendDto {
   subject?: string;
 
   @IsString()
-  text: string;
+  @IsOptional()
+  text?: string;
 
   @IsString()
   html?: string;

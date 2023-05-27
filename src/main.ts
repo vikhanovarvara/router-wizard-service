@@ -21,10 +21,8 @@ const envs: string[] = [
   'EMAIL_SERVICE_HOST',
   'ACCESS_TOKEN_SECRET',
   'REFRESH_TOKEN_SECRET',
-  'EMAIL_CODE_SECRET',
   'ACCESS_TOKEN_NAME',
   'REFRESH_TOKEN_NAME',
-  'EMAIL_CODE_NAME',
 ];
 
 const requiredEnvs = getRequiredEnvsByNodeEnv(
@@ -46,7 +44,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(PORT, () => {
-    console.log('NIEPCE SERVICE LISTEN: ' + PORT);
+    console.log('ROUTER WIZARD SERVICE LISTEN: ' + PORT);
   });
 }
 
